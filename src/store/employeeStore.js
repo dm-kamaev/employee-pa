@@ -6,20 +6,18 @@ const state = {
 
 const mutations = {
   [employeeTypes.SET_EMPLOYEE_ID]: function (state, { employeeId }) {
-    console.log([employeeTypes.SET_EMPLOYEE_ID], employeeId);
+    console.log([employeeTypes.SET_EMPLOYEE_ID], employeeId)
     state.employeeId = employeeId
   }
 }
 
 const actions = {}
 
-
 const getters = {
-  employeeId: function(state, getters) {
-    return state.employeeId;
-  },
-};
-
+  employeeId: function (state, getters) {
+    return state.employeeId
+  }
+}
 
 export default {
   state,

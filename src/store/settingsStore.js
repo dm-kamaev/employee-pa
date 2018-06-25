@@ -35,10 +35,10 @@ const actions = {
     commit(settingsTypes.LOAD_SETTINGS_START)
 
     try {
-      const { employeeId } = await authApi.getAuthData();
+      const { employeeId } = await authApi.getAuthData()
       if (employeeId) {
-        commit(employeeTypes.SET_EMPLOYEE_ID, { employeeId });
-        commit(settingsTypes.LOAD_SETTINGS_SUCCESS);
+        commit(employeeTypes.SET_EMPLOYEE_ID, { employeeId })
+        commit(settingsTypes.LOAD_SETTINGS_SUCCESS)
       }
     } catch (err) {
       commit(settingsTypes.LOAD_SETTINGS_ERROR)

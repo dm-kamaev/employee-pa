@@ -28,15 +28,14 @@ const actions = {
   // },
 
   [authTypes.SIGN_IN]: async function ({ commit, dispatch }) {
-    commit(authTypes.SIGN_IN);
+    commit(authTypes.SIGN_IN)
     try {
       await dispatch(settingsTypes.ACTION_LOAD_SETTINGS)
     } catch (err) {
-      console.error(err);
+      console.error(err)
     }
   }
 }
-
 
 export default {
   state,
