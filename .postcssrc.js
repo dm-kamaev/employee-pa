@@ -1,10 +1,26 @@
 // https://github.com/michael-ciniawsky/postcss-load-config
+const stylelintConf = require('./stylelint.config');
 
 module.exports = {
   "plugins": {
-    "postcss-import": {},
-    "postcss-url": {},
     // to edit target browsers: use "browserslist" field in package.json
-    "autoprefixer": {}
+    "postcss-import": {},
+    "stylelint": {
+      "rules": stylelintConf
+    },
+    "postcss-reporter": {
+      clearMessages: true
+    },
+    "postcss-apply": {},
+    "postcss-nested": {},
+    "postcss-custom-properties": {},
+    "postcss-custom-media": {},
+    "css-mqpacker": {
+      sort: true
+    },
+    "autoprefixer": {},
+    "postcss-csso": {
+      restructure: false
+    }
   }
 }

@@ -14,43 +14,14 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
 
-
-// console.dir({
-//       clientLogLevel: 'warning',
-//       historyApiFallback: {
-//         rewrites: [{
-//           from: /.*/,
-//           to: path.posix.join(config.dev.assetsPublicPath, 'index.html')
-//         }, ],
-//       },
-//       hot: true,
-//       // contentBase: false, // since we use CopyWebpackPlugin.
-//       contentBase: path.resolve(__dirname, '../public'), // since we use CopyWebpackPlugin.
-//       compress: true,
-//       host: HOST || config.dev.host,
-//       port: PORT || config.dev.port,
-//       open: config.dev.autoOpenBrowser,
-//       overlay: config.dev.errorOverlay ?
-//         {
-//           warnings: false,
-//           errors: true
-//         } :
-//         false,
-//       publicPath: config.dev.assetsPublicPath,
-//       proxy: config.dev.proxyTable,
-//       quiet: true, // necessary for FriendlyErrorsPlugin
-//       watchOptions: {
-//         poll: config.dev.poll,
-//       }
-//     }, { depth: 20, color:true});
-// global.process.exit();
+// console.log(baseWebpackConfig.output);global.process.exit();
 
 // console.dir({
 //   path: config.build.assetsRoot,
 //   filename: utils.assetsPath('js/app.js'),
 //   chunkFilename: utils.assetsPath('js/app.js')
 // }, { depth: 20, color:true});
-
+// console.log(utils.styleLoaders({ sourceMap: config.dev.cssSourceMap, usePostCSS: true })); global.process.exit();
 const devWebpackConfig = merge(baseWebpackConfig, {
   module: {
     rules: utils.styleLoaders({ sourceMap: config.dev.cssSourceMap, usePostCSS: true })
@@ -58,6 +29,11 @@ const devWebpackConfig = merge(baseWebpackConfig, {
   watch: true,
   // cheap-module-eval-source-map is faster for development
   devtool: config.dev.devtool,
+  output: {
+    path: path.resolve(__dirname, '../../pancake/stat/employee-pa'),
+    filename: '[name].js',
+    publicPath: '/stat/employee-pa'
+  },
 
   // these devServer options should be customized in /config/index.js
   // devServer: {
@@ -118,28 +94,3 @@ const devWebpackConfig = merge(baseWebpackConfig, {
 })
 
 module.exports = devWebpackConfig;
-// module.exports = new Promise((resolve, reject) => {
-//   portfinder.basePort = process.env.PORT || config.dev.port
-//   portfinder.getPort((err, port) => {
-//     if (err) {
-//       reject(err)
-//     } else {
-//       // publish the new Port, necessary for e2e tests
-//       process.env.PORT = port
-//       // add port to devServer config
-//       devWebpackConfig.devServer.port = port
-
-//       // Add FriendlyErrorsPlugin
-//       devWebpackConfig.plugins.push(new FriendlyErrorsPlugin({
-//         compilationSuccessInfo: {
-//           messages: [`Your application is running here: http://${devWebpackConfig.devServer.host}:${port}`],
-//         },
-//         onErrors: config.dev.notifyOnErrors
-//         ? utils.createNotifierCallback()
-//         : undefined
-//       }))
-
-//       resolve(devWebpackConfig)
-//     }
-//   })
-// })

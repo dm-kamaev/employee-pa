@@ -4,6 +4,7 @@ require('./check-versions')()
 // BUILD PROJECT WITHOUT SERVER IN FOLDER DIST/
 
 process.env.NODE_ENV = 'development'
+// process.env.NODE_ENV = 'production'
 
 const ora = require('ora')
 const rm = require('rimraf')
@@ -16,7 +17,8 @@ const webpackConfig = require('./webpack_dev_without_server.conf.js')
 const spinner = ora('building without server...')
 spinner.start()
 
-rm(path.join(config.build.assetsRoot, config.build.assetsSubDirectory), err => {
+// rm(path.join(config.build.assetsRoot, config.build.assetsSubDirectory), err => {
+rm('/p/pancake/stat/employee-pa/', err => {
   if (err) throw err
   webpack(webpackConfig, (err, stats) => {
     spinner.stop()
