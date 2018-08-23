@@ -1,20 +1,20 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
-import Vue from 'vue'
-import vuexRouterSync from 'vuex-router-sync'
-import App from './App'
-import router from './router'
+import Vue from 'vue';
+import vuexRouterSync from 'vuex-router-sync';
+import App from './App';
+import router from './router';
 
-import authTypes from '@/store/authTypes.js'
-import store from '@/store/injectStore.js'
+import authTypes from '@/store/authTypes.js';
+import store from '@/store/injectStore.js';
 
-import moment from 'moment'
+import moment from 'moment';
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
-vuexRouterSync.sync(store, router)
+vuexRouterSync.sync(store, router);
 
-moment.locale('ru')
+moment.locale('ru');
 
 // COPY START STATE FOR LOGOUT
 // window.initialStateCopy = JSON.parse(JSON.stringify(store.state))
@@ -26,6 +26,6 @@ new Vue({
   store,
   components: { App },
   template: '<App/>'
-})
+});
 
-store.dispatch(authTypes.SIGN_IN)
+store.dispatch(authTypes.SIGN_IN);

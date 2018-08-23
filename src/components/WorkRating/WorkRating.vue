@@ -1,187 +1,191 @@
 <template>
-   <div class="work-rating">
-     <section class="work-rating__section">
-       <div class="work-rating__link-wrapper">
-         <a class="work-rating__link" :href=buildLinkToRatingHistory>История</a>
-       </div>
-       <p class="work-rating__title">
-         Ваш процент оплаты:
-         <span class="work-rating__title  work-rating__title--orange">60%</span>
-       </p>
-       <ul class="work-rating__list">
-         <li class="work-rating__list-item">
-           <p class="work-rating__text">Ваш рейтинг:
-            <span class="work-rating__text  work-rating__text--bold">85.6</span>
-           </p>
-         </li>
-         <li class="work-rating__list-item">
-           <p class="work-rating__text">Cредний бал:
-            <span class="work-rating__text  work-rating__text--bold">4.5</span>
-           </p>
-         </li>
-         <li class="work-rating__list-item">
-           <p class="work-rating__text">Дисциплина:
-            <span class="work-rating__text  work-rating__text--bold">96%</span>
-           </p>
-         </li>
-       </ul>
-     </section>
-
-     <section class="work-rating__section">
-       <div class="work-rating__link-wrapper">
-         <a class="work-rating__link" href="#">Хочу больше</a>
-       </div>
-       <p class="work-rating__title">Ваш процент оплаты составляет:
-         <span class="work-rating__title  work-rating__title--orange">63%</span>
-       </p>
-       <ul class="work-rating__list">
-         <li class="work-rating__list-item">
-           <p class="work-rating__text">
-             <span class="work-rating__text  work-rating__text--bold">51% </span>
-             Участия в заказе
-           </p>
-         </li>
-         <li class="work-rating__list-item">
-           <p class="work-rating__text">
-             <span class="work-rating__text  work-rating__text--bold">5% </span>
-             Домовой
-           </p>
-         </li>
-         <li class="work-rating__list-item">
-           <p class="work-rating__text">
-             <span class="work-rating__text  work-rating__text--bold">7% </span>
-             Опят - повышения до 6% через
-             <span class="work-rating__text  work-rating__text--bold">54 </span>
-             рабочих дней
-           </p>
-         </li>
-       </ul>
-       <div class="work-rating__chart"></div>
-       <a class="work-rating__link" href="#">Как стать Домовым и получать больше?</a>
-     </section>
-
-     <section class="work-rating__section">
-       <div class="work-rating__link-wrapper">
-         <a class="work-rating__link" href="#">Рейтинг и проценты</a>
-       </div>
-       <p class="work-rating__title">Ваш рейтинг:
-         <span class="work-rating__title  work-rating__title--orange">91.8</span>
-       </p>
-       <p class="work-rating__paragraph  work-rating__text">
-         Следующая граница рейтинга<br>
-         <span class="work-rating__text  work-rating__text--orange">96 = 51% оплаты</span>
-       </p>
-       <p class="work-rating__text  work-rating__list-title">Для этого необходимо:</p>
-       <ul class="work-rating__list">
-         <li class="work-rating__list-item">
-           <p class="work-rating__text">Средняя оценка 4,8
-            <a class="work-rating__link" href="#">Как увеличить?</a>
-           </p>
-         </li>
-         <li class="work-rating__list-item">
-           <p class="work-rating__text">Дисциплина 99%
-             <a class="work-rating__link" href="#">Как увеличить?</a>
-           </p>
-         </li>
-       </ul>
-       <div class="work-rating__tip">
-         <p class="work-rating__text">Ваш рейтинг вырос! Продажайте в том же духе - не получайте ДН и/или потому что
-           снизился средний бал.</p>
-       </div>
-       <div class="work-rating__chart"></div>
-     </section>
-
-     <section class="work-rating__section">
-       <div class="work-rating__link-wrapper">
-         <a class="work-rating__link" href="#">История</a>
-       </div>
-       <p class="work-rating__title">Ваш средний бал:
-         <span class="work-rating__title  work-rating__title--orange">5,4</span>
-       </p>
-       <div class="work-rating__score">
-         <ul class="work-rating__score-column">
-           <li class="work-rating__score-number">333</li>
-           <li class="work-rating__score-number">7</li>
-           <li class="work-rating__score-number">33455</li>
-           <li class="work-rating__score-number">56</li>
-           <li class="work-rating__score-number">90</li>
-         </ul>
-         <ul class="work-rating__score-column">
-           <li class="work-rating__stars-wrapper">
-             <i class="work-rating__star"></i>
-             <i class="work-rating__star"></i>
-             <i class="work-rating__star"></i>
-             <i class="work-rating__star"></i>
-             <i class="work-rating__star"></i>
+  <div>
+    <EmployeeMenu></EmployeeMenu>
+     <div class="work-rating">
+       <section class="work-rating__section">
+         <div class="work-rating__link-wrapper">
+           <a class="work-rating__link" :href=buildLinkToRatingHistory>История</a>
+         </div>
+         <p class="work-rating__title">
+           Ваш процент оплаты:
+           <span class="work-rating__title  work-rating__title--orange">60%</span>
+         </p>
+         <ul class="work-rating__list">
+           <li class="work-rating__list-item">
+             <p class="work-rating__text">Ваш рейтинг:
+              <span class="work-rating__text  work-rating__text--bold">85.6</span>
+             </p>
            </li>
-           <li class="work-rating__stars-wrapper">
-             <i class="work-rating__star"></i>
-             <i class="work-rating__star"></i>
-             <i class="work-rating__star"></i>
-             <i class="work-rating__star"></i>
+           <li class="work-rating__list-item">
+             <p class="work-rating__text">Cредний бал:
+              <span class="work-rating__text  work-rating__text--bold">4.5</span>
+             </p>
            </li>
-           <li class="work-rating__stars-wrapper">
-             <i class="work-rating__star"></i>
-             <i class="work-rating__star"></i>
-             <i class="work-rating__star"></i>
-           </li>
-           <li class="work-rating__stars-wrapper">
-             <i class="work-rating__star"></i>
-             <i class="work-rating__star"></i>
-           </li>
-           <li class="work-rating__stars-wrapper">
-             <i class="work-rating__star"></i>
+           <li class="work-rating__list-item">
+             <p class="work-rating__text">Дисциплина:
+              <span class="work-rating__text  work-rating__text--bold">96%</span>
+             </p>
            </li>
          </ul>
-       </div>
-       <p class="work-rating__paragraph  work-rating__text">
-         Изменения за неделю:<br>
-         было
-         <span class="work-rating__text  work-rating__text--bold">4,3</span>
-         <span class="work-rating__text  work-rating__text--orange">+1</span>
-         стало
-         <span class="work-rating__text  work-rating__text--bold">4,4</span>
-       </p>
-       <div class="work-rating__tip">
-         <p class="work-rating__text">Ваш средний бал вырос! Продажайте в том же духе, для достижения среднего бала
-           5,4 вам неободимо получить 23 оценки, из них 18 “5”, 5 ”4”</p>
-       </div>
-       <div class="work-rating__chart"></div>
-       <div class="work-rating__tip">
-         <p class="work-rating__text">Персональные рекомендации для увеличения  среднеего балла - на что обратить
-           внимания - комметарии для Домовенка из анкетирывания с оценками ниже “5”</p>
-       </div>
-     </section>
-     <section class="work-rating__section">
-       <div class="work-rating__link-wrapper">
-         <a class="work-rating__link" href="#">Нарушения</a>
-       </div>
-       <p class="work-rating__title">Дисциплина:
-         <span class="work-rating__title  work-rating__title--orange">70%</span>
-       </p>
-       <p class="work-rating__paragraph  work-rating__text">Действующих нарушений 2</p>
-       <ul class="work-rating__list">
-         <li class="work-rating__list-item">
-           <p class="work-rating__text">16.04 Опаздания на заказ 50 баллов, прекратит влияния через 20 дней</p>
-         </li>
-         <li class="work-rating__list-item">
-           <p class="work-rating__text">26.03 Старт-стоп заказа 50 баллов, пректарит влияния через 3 дня</p>
-         </li>
-       </ul>
-       <div class="work-rating__tip">
-         <p class="work-rating__text">Для достижения дисциплины 80% не получайте нарушения в течении 3 дней и далее.<br>
-           Для достижения дисциплины 100% не получайте нарушения в течении 20 дней.</p>
-       </div>
-       <div class="work-rating__chart"></div>
-     </section>
+       </section>
 
-   </div>
+       <section class="work-rating__section">
+         <div class="work-rating__link-wrapper">
+           <a class="work-rating__link" href="#123">Хочу больше</a>
+         </div>
+         <p class="work-rating__title">Ваш процент оплаты составляет:
+           <span class="work-rating__title  work-rating__title--orange">63%</span>
+         </p>
+         <ul class="work-rating__list">
+           <li class="work-rating__list-item">
+             <p class="work-rating__text">
+               <span class="work-rating__text  work-rating__text--bold">51% </span>
+               Участия в заказе
+             </p>
+           </li>
+           <li class="work-rating__list-item">
+             <p class="work-rating__text">
+               <span class="work-rating__text  work-rating__text--bold">5% </span>
+               Домовой
+             </p>
+           </li>
+           <li class="work-rating__list-item">
+             <p class="work-rating__text">
+               <span class="work-rating__text  work-rating__text--bold">7% </span>
+               Опят - повышения до 6% через
+               <span class="work-rating__text  work-rating__text--bold">54 </span>
+               рабочих дней
+             </p>
+           </li>
+         </ul>
+         <div class="work-rating__chart"></div>
+         <a class="work-rating__link" href="#123">Как стать Домовым и получать больше?</a>
+       </section>
+
+       <section class="work-rating__section">
+         <div class="work-rating__link-wrapper">
+           <a class="work-rating__link" href="#123">Рейтинг и проценты</a>
+         </div>
+         <p class="work-rating__title">Ваш рейтинг:
+           <span class="work-rating__title  work-rating__title--orange">91.8</span>
+         </p>
+         <p class="work-rating__paragraph  work-rating__text">
+           Следующая граница рейтинга<br>
+           <span class="work-rating__text  work-rating__text--orange">96 = 51% оплаты</span>
+         </p>
+         <p class="work-rating__text  work-rating__list-title">Для этого необходимо:</p>
+         <ul class="work-rating__list">
+           <li class="work-rating__list-item">
+             <p class="work-rating__text">Средняя оценка 4,8
+              <a class="work-rating__link" href="#123">Как увеличить?</a>
+             </p>
+           </li>
+           <li class="work-rating__list-item">
+             <p class="work-rating__text">Дисциплина 99%
+               <a class="work-rating__link" href="#123">Как увеличить?</a>
+             </p>
+           </li>
+         </ul>
+         <div class="work-rating__tip">
+           <p class="work-rating__text">Ваш рейтинг вырос! Продажайте в том же духе - не получайте ДН и/или потому что
+             снизился средний бал.</p>
+         </div>
+         <div class="work-rating__chart"></div>
+       </section>
+
+       <section class="work-rating__section">
+         <div class="work-rating__link-wrapper">
+           <a class="work-rating__link" href="#123">История</a>
+         </div>
+         <p class="work-rating__title">Ваш средний бал:
+           <span class="work-rating__title  work-rating__title--orange">5,4</span>
+         </p>
+         <div class="work-rating__score">
+           <ul class="work-rating__score-column">
+             <li class="work-rating__score-number">333</li>
+             <li class="work-rating__score-number">7</li>
+             <li class="work-rating__score-number">33455</li>
+             <li class="work-rating__score-number">56</li>
+             <li class="work-rating__score-number">90</li>
+           </ul>
+           <ul class="work-rating__score-column">
+             <li class="work-rating__stars-wrapper">
+               <i class="work-rating__star"></i>
+               <i class="work-rating__star"></i>
+               <i class="work-rating__star"></i>
+               <i class="work-rating__star"></i>
+               <i class="work-rating__star"></i>
+             </li>
+             <li class="work-rating__stars-wrapper">
+               <i class="work-rating__star"></i>
+               <i class="work-rating__star"></i>
+               <i class="work-rating__star"></i>
+               <i class="work-rating__star"></i>
+             </li>
+             <li class="work-rating__stars-wrapper">
+               <i class="work-rating__star"></i>
+               <i class="work-rating__star"></i>
+               <i class="work-rating__star"></i>
+             </li>
+             <li class="work-rating__stars-wrapper">
+               <i class="work-rating__star"></i>
+               <i class="work-rating__star"></i>
+             </li>
+             <li class="work-rating__stars-wrapper">
+               <i class="work-rating__star"></i>
+             </li>
+           </ul>
+         </div>
+         <p class="work-rating__paragraph  work-rating__text">
+           Изменения за неделю:<br>
+           было
+           <span class="work-rating__text  work-rating__text--bold">4,3</span>
+           <span class="work-rating__text  work-rating__text--orange">+1</span>
+           стало
+           <span class="work-rating__text  work-rating__text--bold">4,4</span>
+         </p>
+         <div class="work-rating__tip">
+           <p class="work-rating__text">Ваш средний бал вырос! Продажайте в том же духе, для достижения среднего бала
+             5,4 вам неободимо получить 23 оценки, из них 18 “5”, 5 ”4”</p>
+         </div>
+         <div class="work-rating__chart"></div>
+         <div class="work-rating__tip">
+           <p class="work-rating__text">Персональные рекомендации для увеличения  среднеего балла - на что обратить
+             внимания - комметарии для Домовенка из анкетирывания с оценками ниже “5”</p>
+         </div>
+       </section>
+       <section class="work-rating__section">
+         <div class="work-rating__link-wrapper">
+           <a class="work-rating__link" :href=buildLinkToDisciplinary>Нарушения</a>
+         </div>
+         <p class="work-rating__title">Дисциплина:
+           <span class="work-rating__title  work-rating__title--orange">70%</span>
+         </p>
+         <p class="work-rating__paragraph  work-rating__text">Действующих нарушений 2</p>
+         <ul class="work-rating__list">
+           <li class="work-rating__list-item">
+             <p class="work-rating__text">16.04 Опаздания на заказ 50 баллов, прекратит влияния через 20 дней</p>
+           </li>
+           <li class="work-rating__list-item">
+             <p class="work-rating__text">26.03 Старт-стоп заказа 50 баллов, пректарит влияния через 3 дня</p>
+           </li>
+         </ul>
+         <div class="work-rating__tip">
+           <p class="work-rating__text">Для достижения дисциплины 80% не получайте нарушения в течении 3 дней и далее.<br>
+             Для достижения дисциплины 100% не получайте нарушения в течении 20 дней.</p>
+         </div>
+         <div class="work-rating__chart"></div>
+       </section>
+
+     </div>
+  </div>
 </template>
 
 <script>
 
-import employeeApi from '@/api/employeeApi.js'
-import authApi from '@/api/authApi.js'
+import employeeApi from '@/api/employeeApi.js';
+import authApi from '@/api/authApi.js';
+import EmployeeMenu from '@/components/EmployeeMenu/EmployeeMenu.vue';
 
 // void async function () {
 //   const authData = await authApi.getAuthData();
@@ -198,16 +202,22 @@ import authApi from '@/api/authApi.js'
 
 export default {
   name: 'WorkRating',
+  components: {
+    EmployeeMenu
+  },
   data: () => ({
 
   }),
   computed: {
     buildLinkToRatingHistory () {
-      return '/staff/'+this.$store.getters.employeeId+'/rating_history';
+      return '/staff/' + this.$store.getters.employeeId + '/rating_history';
+    },
+    buildLinkToDisciplinary () {
+      return '/staff/' + this.$store.getters.employeeId + '/disciplinary';
     }
   },
   methods: {}
-}
+};
 
 </script>
 

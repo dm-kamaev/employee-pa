@@ -1,1 +1,1 @@
-export default { SET_EMPLOYEE_ID: 'SET_EMPLOYEE_ID' }
+export default { SET_EMPLOYEE_ID: 'SET_EMPLOYEE_ID' };

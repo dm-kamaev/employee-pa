@@ -1,5 +1,5 @@
-import settingsTypes from '@/store/settingsTypes.js'
-import authTypes from '@/store/authTypes.js'
+import settingsTypes from '@/store/settingsTypes.js';
+import authTypes from '@/store/authTypes.js';
 // import authApi from '@/api/authApi.js'
 
 // const resetState = function () {
@@ -8,16 +8,16 @@ import authTypes from '@/store/authTypes.js'
 
 const state = {
   loggedIn: false
-}
+};
 
 const mutations = {
   // [authTypes.SIGN_OUT]: function(state) {
   //   state.loggedIn = false
   // },
   [authTypes.SIGN_IN]: function (state) {
-    state.loggedIn = true
+    state.loggedIn = true;
   }
-}
+};
 
 const actions = {
   // async signOut ({ dispatch }) {
@@ -28,17 +28,17 @@ const actions = {
   // },
 
   [authTypes.SIGN_IN]: async function ({ commit, dispatch }) {
-    commit(authTypes.SIGN_IN)
     try {
-      await dispatch(settingsTypes.ACTION_LOAD_SETTINGS)
+      await dispatch(settingsTypes.ACTION_LOAD_SETTINGS);
+      commit(authTypes.SIGN_IN);
     } catch (err) {
-      console.error(err)
+      console.error(err);
     }
   }
-}
+};
 
 export default {
   state,
   mutations,
   actions
-}
+};
