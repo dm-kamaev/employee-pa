@@ -6,7 +6,8 @@ const path = require('path')
 
 module.exports = {
   dev: {
-
+    // /p/pancake/stat/employee-pa/
+    assetsRoot: path.resolve(__dirname, '../../pancake/stat/employee-pa/'),
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
@@ -44,9 +45,10 @@ module.exports = {
   },
 
   build: {
-    // Template for index.html
+    // where to write resulting template
     // index: path.resolve(__dirname, '../dist/index.html'),
-    index: '/p/pancake/stat/employee-pa/index.html',
+    // /p/pancake/stat/employee-pa/index.html
+    index: path.resolve(__dirname, '../../pancake/stat/employee-pa/index.html'),
 
     // Paths
     // assetsRoot: path.resolve(__dirname, '../dist'),

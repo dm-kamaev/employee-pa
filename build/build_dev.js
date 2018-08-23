@@ -18,7 +18,7 @@ const spinner = ora('building without server...')
 spinner.start()
 
 // rm(path.join(config.build.assetsRoot, config.build.assetsSubDirectory), err => {
-rm('/p/pancake/stat/employee-pa/', err => {
+rm(config.dev.assetsRoot, err => {
   if (err) throw err
   webpack(webpackConfig, (err, stats) => {
     spinner.stop()
