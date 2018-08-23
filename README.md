@@ -8,8 +8,11 @@
 # install dependencies
 npm install
 
-# serve with hot reload at localhost:8080
+# build static to /p/pancake/stat/employee-pa and watch change
 npm run dev
+
+# serve with hot reload at localhost:8080
+npm run dev_server
 
 # build for production with minification
 npm run build
