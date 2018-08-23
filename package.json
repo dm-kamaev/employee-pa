@@ -16,6 +16,7 @@
     "moment": "^2.22.2",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
+    "vue-scrollto": "2.11.0",
     "vue2-highcharts": "1.2.4",
     "vue_components": "git+ssh://git@bitbucket.org/wwwdomovenoksu/vue_components.git#master",
     "vuex-router-sync": "^5.0.0"

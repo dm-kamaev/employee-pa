@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import WorkRating from '@/components/WorkRating/WorkRating.vue';
+import RatingAndPercent from '@/components/RatingAndPercent/RatingAndPercent.vue';
 
 Vue.use(Router);
 
@@ -10,14 +11,19 @@ const router = new Router({
     {
       path: '/staff/:employeeId/rating2',
       name: 'WorkRating',
-      component: WorkRating
-    }
+      component: WorkRating,
+    },
+    {
+      name: 'ratingAndPercent',
+      path: '/staff/:employeeId/rating2/rating_and_percent',
+      component: RatingAndPercent
+    },
   ]
 });
 
 router.beforeEach(async (componentTo, from, next) => {
-  // console.log('from=', from);
-  // console.log('to=', componentTo);
+  console.log('from=', from);
+  console.log('to=', componentTo);
   next();
 });
 

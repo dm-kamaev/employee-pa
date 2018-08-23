@@ -7,14 +7,17 @@ import router from './router';
 
 import authTypes from '@/store/authTypes.js';
 import store from '@/store/injectStore.js';
+import VueScrollTo from 'vue-scrollto';
 
 import moment from 'moment';
+moment.locale('ru');
 
 Vue.config.productionTip = false;
 
 vuexRouterSync.sync(store, router);
 
-moment.locale('ru');
+Vue.use(VueScrollTo);
+
 
 // COPY START STATE FOR LOGOUT
 // window.initialStateCopy = JSON.parse(JSON.stringify(store.state))

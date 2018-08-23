@@ -4,7 +4,7 @@
      <div class="work-rating">
        <section class="work-rating__section">
          <div class="work-rating__link-wrapper">
-           <a class="work-rating__link" :href=buildLinkToRatingHistory>История</a>
+           <a class="work-rating__link" :href="buildLinkToRatingHistory">История</a>
          </div>
          <p class="work-rating__title">
            Ваш процент оплаты:
@@ -31,7 +31,7 @@
 
        <section class="work-rating__section">
          <div class="work-rating__link-wrapper">
-           <a class="work-rating__link" href="#123">Хочу больше</a>
+           <a class="work-rating__link"  v-scroll-to="'#rating'" href="#">Хочу больше</a>
          </div>
          <p class="work-rating__title">Ваш процент оплаты составляет:
            <span class="work-rating__title  work-rating__title--orange">63%</span>
@@ -62,9 +62,9 @@
          <a class="work-rating__link" href="#123">Как стать Домовым и получать больше?</a>
        </section>
 
-       <section class="work-rating__section">
+       <section id="rating" class="work-rating__section">
          <div class="work-rating__link-wrapper">
-           <a class="work-rating__link" href="#123">Рейтинг и проценты</a>
+           <router-link class="work-rating__link" :to="{ name: 'ratingAndPercent', params: { employeeId: getEmployeeId }}">Рейтинг и проценты</router-link>
          </div>
          <p class="work-rating__title">Ваш рейтинг:
            <span class="work-rating__title  work-rating__title--orange">91.8</span>
@@ -95,7 +95,7 @@
 
        <section class="work-rating__section">
          <div class="work-rating__link-wrapper">
-           <a class="work-rating__link" href="#123">История</a>
+           <a class="work-rating__link" href=#>История</a>
          </div>
          <p class="work-rating__title">Ваш средний бал:
            <span class="work-rating__title  work-rating__title--orange">5,4</span>
@@ -156,7 +156,7 @@
        </section>
        <section class="work-rating__section">
          <div class="work-rating__link-wrapper">
-           <a class="work-rating__link" :href=buildLinkToDisciplinary>Нарушения</a>
+           <a class="work-rating__link" :href="buildLinkToDisciplinary">Нарушения</a>
          </div>
          <p class="work-rating__title">Дисциплина:
            <span class="work-rating__title  work-rating__title--orange">70%</span>
@@ -187,18 +187,6 @@ import employeeApi from '@/api/employeeApi.js';
 import authApi from '@/api/authApi.js';
 import EmployeeMenu from '@/components/EmployeeMenu/EmployeeMenu.vue';
 
-// void async function () {
-//   const authData = await authApi.getAuthData();
-//   const employeeId = authData.employeeId
-
-//   employeeApi.setId(employeeId);
-
-//   const ratingInfo = await employeeApi.getRatingInfo();
-//   const savingFundInfo = await employeeApi.getSavingFundInfo();
-//   console.log('authData=', JSON.stringify(authData, null, 2));
-//   console.log('savingFundInfo=', JSON.stringify(savingFundInfo, null, 2));
-//   console.log('ratingInfo=', JSON.stringify(ratingInfo, null, 2));
-// }()
 
 export default {
   name: 'WorkRating',
@@ -214,6 +202,9 @@ export default {
     },
     buildLinkToDisciplinary () {
       return '/staff/' + this.$store.getters.employeeId + '/disciplinary';
+    },
+    getEmployeeId () {
+      return this.$store.getters.employeeId;
     }
   },
   methods: {}
