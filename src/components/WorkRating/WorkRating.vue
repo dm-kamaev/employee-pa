@@ -59,12 +59,12 @@
            </li>
          </ul>
          <div class="work-rating__chart"></div>
-         <a class="work-rating__link" href="#123">Как стать Домовым и получать больше?</a>
+         <router-link class="work-rating__link" :to="{ name: 'BecomeDomovenok', params: { employeeId: getEmployeeId }}">Как стать Домовым и получать больше?</router-link>
        </section>
 
        <section id="rating" class="work-rating__section">
          <div class="work-rating__link-wrapper">
-           <router-link class="work-rating__link" :to="{ name: 'ratingAndPercent', params: { employeeId: getEmployeeId }}">Рейтинг и проценты</router-link>
+           <router-link class="work-rating__link" :to="{ name: 'RatingAndPercent', params: { employeeId: getEmployeeId }}">Рейтинг и проценты</router-link>
          </div>
          <p class="work-rating__title">Ваш рейтинг:
            <span class="work-rating__title  work-rating__title--orange">91.8</span>
@@ -77,12 +77,12 @@
          <ul class="work-rating__list">
            <li class="work-rating__list-item">
              <p class="work-rating__text">Средняя оценка 4,8
-              <a class="work-rating__link" href="#123">Как увеличить?</a>
+              <a class="work-rating__link" v-scroll-to="'#you-averadge-point'" href="#">Как увеличить?</a>
              </p>
            </li>
            <li class="work-rating__list-item">
              <p class="work-rating__text">Дисциплина 99%
-               <a class="work-rating__link" href="#123">Как увеличить?</a>
+               <a class="work-rating__link" :href=buildLinkToDisciplinary>Как увеличить?</a>
              </p>
            </li>
          </ul>
@@ -93,9 +93,9 @@
          <div class="work-rating__chart"></div>
        </section>
 
-       <section class="work-rating__section">
+       <section id="you-averadge-point" class="work-rating__section">
          <div class="work-rating__link-wrapper">
-           <a class="work-rating__link" href=#>История</a>
+           <a class="work-rating__link" :href=buildLinkToRatingHistory>История</a>
          </div>
          <p class="work-rating__title">Ваш средний бал:
            <span class="work-rating__title  work-rating__title--orange">5,4</span>
@@ -183,10 +183,9 @@
 
 <script>
 
-import employeeApi from '@/api/employeeApi.js';
-import authApi from '@/api/authApi.js';
+// import employeeApi from '@/api/employeeApi.js';
+// import authApi from '@/api/authApi.js';
 import EmployeeMenu from '@/components/EmployeeMenu/EmployeeMenu.vue';
-
 
 export default {
   name: 'WorkRating',

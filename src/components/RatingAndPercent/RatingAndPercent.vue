@@ -1,6 +1,6 @@
 <template>
   <div>
-    <EmployeeMenu></EmployeeMenu>
+    <ButtonBack></ButtonBack>
      <table>
       <tr>
         <th>Процент</th>
@@ -31,12 +31,12 @@
 
 <script>
 
-import EmployeeMenu from '@/components/EmployeeMenu/EmployeeMenu.vue';
+import ButtonBack from '@/components/ButtonBack/ButtonBack.vue';
 
 export default {
   name: 'RatingAndPercent',
   components: {
-    EmployeeMenu
+    ButtonBack
   },
   data: () => ({
 
@@ -52,6 +52,7 @@ export default {
 <style scoped>
   @import "../../css/variables.css";
   table {
+    margin-top: 20px;
     border-collapse: collapse;
     width: 100%;
   }

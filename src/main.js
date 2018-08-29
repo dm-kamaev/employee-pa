@@ -18,7 +18,6 @@ vuexRouterSync.sync(store, router);
 
 Vue.use(VueScrollTo);
 
-
 // COPY START STATE FOR LOGOUT
 // window.initialStateCopy = JSON.parse(JSON.stringify(store.state))
 
