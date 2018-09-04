@@ -91,7 +91,6 @@ export default {
   }),
   methods: {
     btnOpenClickHandler () {
-      console.log(this.$route);
       this.menuConditionClass = 'employee-menu__list--open';
     },
 

@@ -28,8 +28,8 @@ const router = new Router({
 });
 
 router.beforeEach(async (componentTo, from, next) => {
-  console.log('from=', from);
-  console.log('to=', componentTo);
+  // console.log('from=', from);
+  // console.log('to=', componentTo);
   next();
 });
 

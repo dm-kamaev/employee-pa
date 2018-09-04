@@ -8,22 +8,22 @@
          </div>
          <p class="work-rating__title">
            Ваш процент оплаты:
-           <span class="work-rating__title  work-rating__title--orange">60%</span>
+           <span class="work-rating__title  work-rating__title--orange">{{ percent }}%</span>
          </p>
          <ul class="work-rating__list">
            <li class="work-rating__list-item">
              <p class="work-rating__text">Ваш рейтинг:
-              <span class="work-rating__text  work-rating__text--bold">85.6</span>
+              <span class="work-rating__text  work-rating__text--bold">{{ rating }}</span>
              </p>
            </li>
            <li class="work-rating__list-item">
              <p class="work-rating__text">Cредний бал:
-              <span class="work-rating__text  work-rating__text--bold">4.5</span>
+              <span class="work-rating__text  work-rating__text--bold">{{ feedbackRating }}</span>
              </p>
            </li>
            <li class="work-rating__list-item">
              <p class="work-rating__text">Дисциплина:
-              <span class="work-rating__text  work-rating__text--bold">96%</span>
+              <span class="work-rating__text  work-rating__text--bold">{{ disciplinaryRating }}%</span>
              </p>
            </li>
          </ul>
@@ -33,32 +33,32 @@
          <div class="work-rating__link-wrapper">
            <a class="work-rating__link"  v-scroll-to="'#rating'" href="#">Хочу больше</a>
          </div>
-         <p class="work-rating__title">Ваш процент оплаты составляет:
-           <span class="work-rating__title  work-rating__title--orange">63%</span>
-         </p>
+         <p class="work-rating__title">Ваш процент оплаты <span class="work-rating__title  work-rating__title--orange">{{ percent }}%</span> составляет:</p>
          <ul class="work-rating__list">
            <li class="work-rating__list-item">
              <p class="work-rating__text">
-               <span class="work-rating__text  work-rating__text--bold">51% </span>
+               <span class="work-rating__text  work-rating__text--bold">{{ percent - positionBonusPercent - stagePercent }}% </span>
                Участия в заказе
              </p>
            </li>
            <li class="work-rating__list-item">
              <p class="work-rating__text">
-               <span class="work-rating__text  work-rating__text--bold">5% </span>
+               <span class="work-rating__text  work-rating__text--bold"> {{ positionBonusPercent }}% </span>
                Домовой
              </p>
            </li>
            <li class="work-rating__list-item">
              <p class="work-rating__text">
-               <span class="work-rating__text  work-rating__text--bold">7% </span>
-               Опят - повышения до 6% через
-               <span class="work-rating__text  work-rating__text--bold">54 </span>
+               <span class="work-rating__text  work-rating__text--bold">{{ stagePercent }}% </span>
+               Опять - повышение до {{ stagePercent + 1 }}% через
+               <span class="work-rating__text  work-rating__text--bold">{{ daysForTheNextStagePercent }} </span>
                рабочих дней
              </p>
            </li>
          </ul>
-         <div class="work-rating__chart"></div>
+         <div v-if=existDataForChartGeneralPercent>
+           <ChartGeneralPercent :chartData=dataForChartGeneralPercent />
+         </div>
          <router-link class="work-rating__link" :to="{ name: 'BecomeDomovenok', params: { employeeId: getEmployeeId }}">Как стать Домовым и получать больше?</router-link>
        </section>
 
@@ -67,30 +67,33 @@
            <router-link class="work-rating__link" :to="{ name: 'RatingAndPercent', params: { employeeId: getEmployeeId }}">Рейтинг и проценты</router-link>
          </div>
          <p class="work-rating__title">Ваш рейтинг:
-           <span class="work-rating__title  work-rating__title--orange">91.8</span>
+           <span class="work-rating__title  work-rating__title--orange">{{rating}}</span>
          </p>
          <p class="work-rating__paragraph  work-rating__text">
            Следующая граница рейтинга<br>
-           <span class="work-rating__text  work-rating__text--orange">96 = 51% оплаты</span>
+           <span class="work-rating__text  work-rating__text--orange">{{ nextLimitOfTheRating }} = {{ nextPercentOfTheWorkOnOrder }}% оплаты</span>
          </p>
          <p class="work-rating__text  work-rating__list-title">Для этого необходимо:</p>
          <ul class="work-rating__list">
            <li class="work-rating__list-item">
-             <p class="work-rating__text">Средняя оценка 4,8
+             <p class="work-rating__text">Средняя оценка {{feedbackRating}}
               <a class="work-rating__link" v-scroll-to="'#you-averadge-point'" href="#">Как увеличить?</a>
              </p>
            </li>
            <li class="work-rating__list-item">
-             <p class="work-rating__text">Дисциплина 99%
+             <p class="work-rating__text">Дисциплина {{disciplinaryRating}}%
                <a class="work-rating__link" :href=buildLinkToDisciplinary>Как увеличить?</a>
              </p>
            </li>
          </ul>
          <div class="work-rating__tip">
-           <p class="work-rating__text">Ваш рейтинг вырос! Продажайте в том же духе - не получайте ДН и/или потому что
-             снизился средний бал.</p>
+           <p class="work-rating__text">{{ ratingRecomendation }}</p>
          </div>
-         <div class="work-rating__chart"></div>
+
+         <div v-if=existDataForChartGeneralRating class="">
+           <ChartGeneralRating :chartData=dataForChartGeneralRating />
+         </div>
+
        </section>
 
        <section id="you-averadge-point" class="work-rating__section">
@@ -98,57 +101,53 @@
            <a class="work-rating__link" :href=buildLinkToRatingHistory>История</a>
          </div>
          <p class="work-rating__title">Ваш средний бал:
-           <span class="work-rating__title  work-rating__title--orange">5,4</span>
+           <span class="work-rating__title  work-rating__title--orange">{{ feedbackRating }}</span>
          </p>
          <div class="work-rating__score">
            <ul class="work-rating__score-column">
-             <li class="work-rating__score-number">333</li>
-             <li class="work-rating__score-number">7</li>
-             <li class="work-rating__score-number">33455</li>
-             <li class="work-rating__score-number">56</li>
-             <li class="work-rating__score-number">90</li>
-           </ul>
+             <li class="work-rating__score-number" :key=index v-for="(el, index) in marksQuantity">
+               {{ el.markQuantity }}
+             </li>
+          </ul>
            <ul class="work-rating__score-column">
-             <li class="work-rating__stars-wrapper">
-               <i class="work-rating__star"></i>
-               <i class="work-rating__star"></i>
-               <i class="work-rating__star"></i>
-               <i class="work-rating__star"></i>
-               <i class="work-rating__star"></i>
-             </li>
-             <li class="work-rating__stars-wrapper">
-               <i class="work-rating__star"></i>
-               <i class="work-rating__star"></i>
-               <i class="work-rating__star"></i>
-               <i class="work-rating__star"></i>
-             </li>
-             <li class="work-rating__stars-wrapper">
-               <i class="work-rating__star"></i>
-               <i class="work-rating__star"></i>
-               <i class="work-rating__star"></i>
-             </li>
-             <li class="work-rating__stars-wrapper">
-               <i class="work-rating__star"></i>
-               <i class="work-rating__star"></i>
-             </li>
-             <li class="work-rating__stars-wrapper">
-               <i class="work-rating__star"></i>
+             <li class="work-rating__stars-wrapper" :key=index v-for="(el, index) in marksQuantity">
+               <template v-if="el.mark === 5">
+                 <i class="work-rating__star"></i>
+                 <i class="work-rating__star"></i>
+                 <i class="work-rating__star"></i>
+                 <i class="work-rating__star"></i>
+                 <i class="work-rating__star"></i>
+               </template>
+               <template v-else-if="el.mark === 4">
+                 <i class="work-rating__star"></i>
+                 <i class="work-rating__star"></i>
+                 <i class="work-rating__star"></i>
+                 <i class="work-rating__star"></i>
+               </template>
+               <template v-else-if="el.mark === 3">
+                 <i class="work-rating__star"></i>
+                 <i class="work-rating__star"></i>
+                 <i class="work-rating__star"></i>
+               </template>
+               <template v-if="el.mark === 2">
+                 <i class="work-rating__star"></i>
+                 <i class="work-rating__star"></i>
+               </template>
+               <template v-if="el.mark === 1">
+                 <i class="work-rating__star"></i>
+               </template>
              </li>
            </ul>
          </div>
-         <p class="work-rating__paragraph  work-rating__text">
-           Изменения за неделю:<br>
-           было
-           <span class="work-rating__text  work-rating__text--bold">4,3</span>
-           <span class="work-rating__text  work-rating__text--orange">+1</span>
-           стало
-           <span class="work-rating__text  work-rating__text--bold">4,4</span>
-         </p>
+
          <div class="work-rating__tip">
-           <p class="work-rating__text">Ваш средний бал вырос! Продажайте в том же духе, для достижения среднего бала
-             5,4 вам неободимо получить 23 оценки, из них 18 “5”, 5 ”4”</p>
+           <p class="work-rating__text">{{ feedbackRecomendation }}</p>
          </div>
-         <div class="work-rating__chart"></div>
+
+         <div v-if=existDataForChartScore>
+           <ChartScore :chartData=dataForChartScore />
+         </div>
+
          <div class="work-rating__tip">
            <p class="work-rating__text">Персональные рекомендации для увеличения  среднеего балла - на что обратить
              внимания - комметарии для Домовенка из анкетирывания с оценками ниже “5”</p>
@@ -159,22 +158,22 @@
            <a class="work-rating__link" :href="buildLinkToDisciplinary">Нарушения</a>
          </div>
          <p class="work-rating__title">Дисциплина:
-           <span class="work-rating__title  work-rating__title--orange">70%</span>
+           <span class="work-rating__title  work-rating__title--orange">{{ disciplinaryRating }}%</span>
          </p>
-         <p class="work-rating__paragraph  work-rating__text">Действующих нарушений 2</p>
+         <p class="work-rating__paragraph  work-rating__text">Действующих нарушений {{disciplinary.length}}</p>
          <ul class="work-rating__list">
-           <li class="work-rating__list-item">
-             <p class="work-rating__text">16.04 Опаздания на заказ 50 баллов, прекратит влияния через 20 дней</p>
-           </li>
-           <li class="work-rating__list-item">
-             <p class="work-rating__text">26.03 Старт-стоп заказа 50 баллов, пректарит влияния через 3 дня</p>
+           <li class="work-rating__list-item" :key=index v-for="(text, index) in disciplinary">
+             <p class="work-rating__text">{{ text }}</p>
            </li>
          </ul>
          <div class="work-rating__tip">
-           <p class="work-rating__text">Для достижения дисциплины 80% не получайте нарушения в течении 3 дней и далее.<br>
-             Для достижения дисциплины 100% не получайте нарушения в течении 20 дней.</p>
+           <p class="work-rating__text">{{disciplinaryRecomendation}}</p>
          </div>
-         <div class="work-rating__chart"></div>
+
+         <div v-if=existDataForChartDisciplinaryOffence>
+           <ChartDisciplinaryOffence :chartData=dataForChartDisciplinaryOffence />
+         </div>
+
        </section>
 
      </div>
@@ -183,18 +182,98 @@
 
 <script>
 
-// import employeeApi from '@/api/employeeApi.js';
+import employeeApi from '@/api/employeeApi.js';
 // import authApi from '@/api/authApi.js';
 import EmployeeMenu from '@/components/EmployeeMenu/EmployeeMenu.vue';
+import ChartGeneralPercent from '@/components/WorkRating/ChartGeneralPercent.vue';
+import ChartGeneralRating from '@/components/WorkRating/ChartGeneralRating.vue';
+import ChartScore from '@/components/WorkRating/ChartScore.vue';
+import ChartDisciplinaryOffence from '@/components/WorkRating/ChartDisciplinaryOffence.vue';
 
 export default {
   name: 'WorkRating',
   components: {
-    EmployeeMenu
+    EmployeeMenu,
+    ChartGeneralPercent,
+    ChartGeneralRating,
+    ChartScore,
+    ChartDisciplinaryOffence
   },
   data: () => ({
 
+    rating: 0,
+    percent: 0,
+    positionBonusPercent: 0,
+
+    feedbackRating: 0,
+    feedbackRecomendation: '',
+
+    stagePercent: 0,
+    daysForTheNextStagePercent: 0,
+
+    nextLimitOfTheRating: 0,
+    nextPercentOfTheWorkOnOrder: 0,
+
+    disciplinaryRating: 0,
+    disciplinary: [],
+    disciplinaryRecomendation: '',
+
+    marksQuantity: [],
+
+    ratingRecomendation: '',
+
+    existDataForChartGeneralPercent: false,
+    existDataForChartGeneralRating: false,
+    existDataForChartScore: false,
+    existDataForChartDisciplinaryOffence: false,
+
+    dataForChartGeneralPercent: {},
+    dataForChartGeneralRating: {},
+    dataForChartScore: {},
+    dataForChartDisciplinaryOffence: {}
   }),
+  mounted: async function () {
+    employeeApi.setId(this.$route.params.employeeId);
+    try {
+      this._ratingWithAdvices();
+
+      const ratingInfo = await employeeApi.getRatingInfo();
+      const details = ratingInfo.details;
+      console.log('details=', details);
+      if (!details) {
+        return;
+      }
+      /**
+       * { rating: "Общий процент", value: 45, dailyChanges:  [{ "date": "2015-03-23T00:00:00Z, "value": 30 }] }
+       */
+      const dataForChartGeneralPercent = details.find(el => el.rating === 'Общий процент');
+      if (dataForChartGeneralPercent) {
+        this.dataForChartGeneralPercent = dataForChartGeneralPercent;
+        this.existDataForChartGeneralPercent = true;
+      }
+
+      const dataForChartGeneralRating = details.find(el => el.rating === 'Общий рейтинг');
+      if (dataForChartGeneralRating) {
+        this.dataForChartGeneralRating = dataForChartGeneralRating;
+        this.existDataForChartGeneralRating = true;
+      }
+
+      const dataForChartScore = details.find(el => el.rating === 'Оценка');
+      if (dataForChartGeneralRating) {
+        this.dataForChartScore = dataForChartScore;
+        this.existDataForChartScore = true;
+      }
+
+      const dataForChartDisciplinaryOffence = details.find(el => el.rating === 'Дисциплина');
+      if (dataForChartDisciplinaryOffence) {
+        this.dataForChartDisciplinaryOffence = dataForChartDisciplinaryOffence;
+        this.existDataForChartDisciplinaryOffence = true;
+      }
+
+    } catch (err) {
+      console.error(err);
+    }
+  },
   computed: {
     buildLinkToRatingHistory () {
       return '/staff/' + this.$store.getters.employeeId + '/rating_history';
@@ -206,7 +285,45 @@ export default {
       return this.$store.getters.employeeId;
     }
   },
-  methods: {}
+  methods: {
+    async _ratingWithAdvices() {
+      try {
+        const ratingWithAdvices = await employeeApi.getRatingWithAdvices();
+        console.log('ratingWithAdvices=', ratingWithAdvices);
+        if (!ratingWithAdvices) {
+          return;
+        }
+        this.rating = ratingWithAdvices.rating;
+        this.percent = ratingWithAdvices.percent;
+
+        this.positionBonusPercent = ratingWithAdvices.positionBonusPercent;
+
+        this.feedbackRating = ratingWithAdvices.feedbackRating;
+        this.feedbackRecomendation = ratingWithAdvices.feedbackRecomendation;
+
+        this.stagePercent = ratingWithAdvices.stagePercent;
+        this.daysForTheNextStagePercent = ratingWithAdvices.daysForTheNextStagePercent;
+
+        this.disciplinaryRating = ratingWithAdvices.disciplinaryRating;
+        this.disciplinary = ratingWithAdvices.disciplinary || [];
+        this.disciplinaryRecomendation = ratingWithAdvices.disciplinaryRecomendation;
+
+        this.nextLimitOfTheRating = ratingWithAdvices.nextLimitOfTheRating;
+        this.nextPercentOfTheWorkOnOrder = ratingWithAdvices.nextPercentOfTheWorkOnOrder;
+
+        /**
+         * { mark: 1, markQuantity: 100 }
+         * @type {object[]}
+         */
+        this.marksQuantity = ratingWithAdvices.marksQuantity;
+
+        this.ratingRecomendation = ratingWithAdvices.ratingRecomendation;
+
+      } catch (err) {
+        console.error(err);
+      }
+    }
+  }
 };
 
 </script>

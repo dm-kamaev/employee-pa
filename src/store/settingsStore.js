@@ -2,6 +2,7 @@
 import settingsTypes from '@/store/settingsTypes';
 import authApi from '@/api/authApi.js';
 import employeeTypes from '@/store/employeeTypes.js';
+import employeeApi from '@/api/employeeApi.js';
 
 const state = {
   loading: false,
@@ -39,6 +40,7 @@ const actions = {
       if (employeeId) {
         commit(employeeTypes.SET_EMPLOYEE_ID, { employeeId });
         commit(settingsTypes.LOAD_SETTINGS_SUCCESS);
+        employeeApi.setId(employeeId);
       }
     } catch (err) {
       commit(settingsTypes.LOAD_SETTINGS_ERROR);
